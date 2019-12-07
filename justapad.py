@@ -5,7 +5,7 @@ from tkinter import messagebox
 
 #**** Window Settings ****
 root = Tk()
-root.title("Justapad")
+root.title("justapad")
 root.iconbitmap("icon.ico")
 
 #**** Functions ****
@@ -32,8 +32,11 @@ def save():
         file.write(text)
         file.close()
 
+def exit():
+    root.quit()
+
 def about():
-    description = messagebox.showinfo("About Justapad", "Justapad\nv1.0\nMade by Shubham Parihar.")
+    description = messagebox.showinfo("About justapad", "justapad\nv1.0\nMade by Shubham Parihar.")
 
 def undo():
     if len(text_area.get("1.0", END + "-1c")) != 0:
@@ -74,7 +77,7 @@ edit.add_command(label="Undo", command=undo)
 edit.add_command(label="Redo", command=redo)
 
 menubar.add_cascade(label="Help", menu=help)
-help.add_command(label="About Justapad", command=about)
+help.add_command(label="About justapad", command=about)
 
 #**** Main Loop ****
 root.geometry("500x500+450+150")
