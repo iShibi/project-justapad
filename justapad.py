@@ -4,6 +4,7 @@ from tkinter.filedialog import askopenfile
 from tkinter import messagebox
 import tkinter.font as tkFont
 
+
 #**** Window Settings ****
 root = Tk()
 root.title("justapad")
@@ -30,7 +31,6 @@ def open(event=""):
             file.close()
     else:
         file = askopenfile()
-        #text_area.delete(1.0, END)
         if file != None:
             content = file.read()
             text_area.insert(1.0, content)
@@ -54,7 +54,7 @@ def exit():
     root.quit()
 
 def about():
-    description = messagebox.showinfo("About justapad", "justapad\nv1.2\nA text editor made by Shubham Parihar.")
+    description = messagebox.showinfo("About justapad", "justapad\nv1.4\nA text editor made by Shubham Parihar.")
 
 def undo(event=""):
     if len(text_area.get("1.0", END + "-1c")) != 0:
@@ -95,7 +95,7 @@ scrollbar = Scrollbar(root)
 scrollbar.pack(side=RIGHT, fill=Y)
 
 #**** Text Area ****
-custom_font = tkFont.Font(family="Times New Roman", size=12)
+custom_font = tkFont.Font(family="Consolas", size=12)
 text_area = Text(root, yscrollcommand=scrollbar.set, height=500, width=500, undo=TRUE)
 text_area.configure(font=custom_font)
 text_area.pack()
@@ -112,7 +112,6 @@ help = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="File", menu=file)
 file.add_command(label="New                             Ctrl+N", command=new)
-#file.add_command(label="New Window")
 file.add_command(label="Open...                        Ctrl+O", command=open)
 file.add_command(label="Save                             Ctrl+S", command=save)
 file.add_separator()
